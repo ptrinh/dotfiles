@@ -1,0 +1,61 @@
+# ------------------------------------------------------------------------------
+# SCREEN SETTINGS
+# ------------------------------------------------------------------------------
+
+startup_message off	# Turn off the introductory startup message.
+#autodetach off		# Close associated programs when screen closes.
+defscrollback 1024	# Define a longer scrollback.
+vbell off			# Turn off screen flashing for bell.
+
+# ------------------------------------------------------------------------------
+# SCREEN KEYBINDINGS
+# ------------------------------------------------------------------------------
+
+escape ^]]		# Use <control>+] instead of <control>+a for screen commands.
+
+# Remove some stupid / dangerous key bindings
+bind ^k
+bind L
+bind ^\
+
+# Make them better
+bind \\ quit
+bind K kill
+
+# ------------------------------------------------------------------------------
+# TERMINAL SETTINGS
+# ------------------------------------------------------------------------------
+
+# The vt100 description does not mention "dl". *sigh*
+termcapinfo vt100 dl=5\E[M
+
+# Set the hardstatus prop on gui terms to set the titlebar/icon title
+termcapinfo xterm*|rxvt*|kterm*|Eterm* hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+
+# List the open screens, with the current screen highlighted.
+# Also list the time and date.
+hardstatus on
+hardstatus alwayslastline "%{= kW} %= %?%-w%? (%{W}%n %t%?(%u)%?) %?%+w%? %="
+
+# set these terminals up to be 'optimal' instead of vt100
+termcapinfo xterm*|linux*|rxvt*|Eterm* OP
+
+# Change the xterm initialization string from is2=\E[!p\E[?3;4l\E[4l\E>
+# (This fixes the "Aborted because of window size change" konsole symptoms found
+# in bug #134198)
+termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# Enable non-blocking mode to better cope with flaky ssh connections.
+defnonblock 5
+
+# ------------------------------------------------------------------------------
+# STARTUP SCREENS
+# ------------------------------------------------------------------------------
+screen -t ssh bash
+screen -t bash bash
+screen -t editor bash
+screen -t man bash
+screen -t batch bash
+screen -t other bash
+select 2
+select 1
