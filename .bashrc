@@ -36,9 +36,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias clang='~/Programs/clang2.6/bin/clang -Wall -std=c99 -lncurses'
 alias emacs='emacs -nw'
-alias gcc='gcc -Wall -std=c99 -lncurses'
 alias serve='python -m SimpleHTTPServer 8080'
 
 export SVN_EDITOR=vim
