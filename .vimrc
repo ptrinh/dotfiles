@@ -18,6 +18,16 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+"Highlight bad spacing
+highlight BadSpacing term=standout ctermbg=cyan
+augroup Spacing
+    autocmd!
+    " Highlight tabulators and trailing spaces (nasty bastards)
+    autocmd BufNewFile,BufReadPre * match BadSpacing /\(\t\|  *$\)/
+    " Only highlight trailing space in tab-filled formats
+    autocmd FileType help,make match BadSpacing /  *$/
+augroup END
+
 " Search as you type.
 set incsearch
 
