@@ -18,6 +18,11 @@ filetype indent on
 "     autocmd filetype python set expandtab
 " endif
 
+" Allow folding.
+set foldenable
+set foldmethod=syntax
+set foldlevelstart=99
+
 " Show line numbers.
 set number
 set numberwidth=4
