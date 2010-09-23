@@ -6,7 +6,7 @@ set wildmenu
 set wildmode=list:full
 
 " Ignore certain file extensions when tab-completing.
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.o
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.o,*.exe
 
 " Set filetype stuff to on.
 filetype on
